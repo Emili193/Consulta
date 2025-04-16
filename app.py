@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template, redirect, url_for
 import pyodbc
+import os
 
 app = Flask(__name__)
 
@@ -79,6 +80,5 @@ def resultados():
 
     return render_template("resultados.html", rows=rows, entrada=entrada, fecha_inicio=fecha_inicio, fecha_fin=fecha_fin, error=error)
 
-
-if __name__ == "__main__":
-    app.run(debug=True)
+if __name__ =='__main__':
+    app.run(debug=True, host="0.0.0.0", port=os.getenv("PORT", default=5000))
